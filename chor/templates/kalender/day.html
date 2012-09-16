@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% load url from future %}
+{% block title %} Termine am {{ day }}. {{ month_name }} {{ year }} {% endblock %}
+
+{% block content %}
+	<h1>Termine am {{ day }}. <a href="{% url "kalender.views.monthly_view" calid=calid year=year month=month %}">{{ month_name }}</a> <a href="{% url "kalender.views.yearly_view" calid=calid year=year %}">{{ year }}</a></h1> <br />
+	<div>
+	<a href="{% url "kalender.views.create_termin" calid=calid year=year month=month day=day %}"><div class="button">Neuen Termin erstellen</div></a>
+<a href="{% url "daily_view" calid=calid year=year month=prev_month day=prev_day %}" class="prev_a"> Vorheriger Tag </a> <a href="{% url "daily_view" calid=calid year=year month=next_month day=next_day %}" class="next_a"> N&auml;chster Tag </a> <br />
+
+	{% if termine %}
+		<ul>
+		{% for termin in termine %}
+		<li class="tlist"><a href="{% url "termin_details" pk=termin.id %}">{{termin.time}}&#9;{{ termin.name }}</a></li>
+		{% endfor %}
+	{% else %} <h3>Keine Termine vorhanden</h3>
+	{% endif %}
+	</div>
+{% endblock %}

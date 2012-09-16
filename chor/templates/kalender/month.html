@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load url from future %}
+
+{% block title %} Termin&uuml;bersicht {{ current_month_name }} {% endblock %}
+
+{% block content %}
+<h1> {{ current_month_name }} <a href="{% url "kalender.views.yearly_view" calid=calid year=year %}" style="color:green;"> {{ year }}</a></h1><br />
+<a href="{% url "kalender.views.create_termin" calid=calid %}"><div class="button">Neuen Termin erstellen</div></a><br />
+<a href="{% url "kalender.views.monthly_view" calid=calid year=prev_year month=prev_month %}" class="prev_a">{{ prev_month_name }}</a> <a href="{% url "kalender.views.monthly_view" calid=calid year=next_year month=next_month %}" class="next_a">{{ next_month_name }}</a> <br />
+{% spaceless %}
+<div class="kalender">
+{% for wkday in week_short %}<span class="thead">{{ wkday }}</span>{% endfor %}<br />
+{% for day, entries, linebreak, is_current in days %}
+    {% if day == 0 %} <span class="empty"> &nbsp; </span>
+    {% else %}  {% if entries > 0 %}<b> {% endif %}
+	    <a href="{% url "daily_view" calid=calid year=year month=month_num day=day %}"><span class="{% if is_current %}current_d{% else %}day{% endif %}"> {{ day }} </span></a>
+    {% if entries > 0 %} </b> {% endif %} {% if linebreak %} <br /> {% endif %}
+    {% endif %}
+{% endfor %}
+</div>
+{% endspaceless %}
+{% endblock %}

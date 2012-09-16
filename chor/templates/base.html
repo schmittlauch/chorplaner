@@ -1,0 +1,117 @@
+{% load url from future %}
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>
+			{% block title %}x {% endblock %}
+		</title>
+		<meta http-equiv="content-type" content="utf-8">
+		<link href="{{ STATIC_URL }}base.css" rel="stylesheet" type="text/css">
+        {% block html-head %} {% endblock %}
+        </head>
+	<body>
+
+        <div id="header">
+		<a href="{% url "kalender.views.kalender_home_view" %}"><img src="{{ STATIC_URL }}logo.png" style="z-index: 2;height: 100%;" /></a> <span id="menu">
+                <div id="hMenu">
+                    <div class="sMenu">
+                        <div class="desc">
+                            Kalender(übersicht/categorys)
+                        </div>
+                        <div class="item">
+                            Chorkalender(--> aktuelles Jahr)
+                        </div>
+                        <div class="item">
+                            Termin erstellen
+                        </div>
+                        <div class="item">
+                            nächste Termine
+                        </div>
+                        <div class="item">
+                            #TODO: Filter (mit AJAX?)
+                        </div>
+                    </div>
+                    <div class="sMenu">
+                        <div class="desc">
+                            <a href="#">Forum</a>
+                        </div>
+                        <div class="item">
+                            Item1
+                        </div>
+                        <div class="item">
+                            Item2
+                        </div>
+                        <div class="item">
+                            Item3
+                        </div>
+                        <div class="item">
+                            Item1
+                        </div>
+                        <div class="item">
+                            Item2
+                        </div>
+                        <div class="item">
+                            Item3
+                        </div>
+                        <div class="item">
+                            Item1
+                        </div>
+                        <div class="item">
+                            Item2
+                        </div>
+                        <div class="item">
+                            Item3
+                        </div>
+                        <div class="item">
+                            Item1
+                        </div>
+                        <div class="item">
+                            Item2
+                        </div>
+                        <div class="item">
+                            Item3
+                        </div>
+                    </div>
+		    <div class="sMenu">
+                        <div class="desc">
+				<a href="{% url "kalender.views.logout_view" %}">Logout</a>
+	    </div></div>
+
+                </div>
+            </span>
+        </div>
+
+		
+        <div id="columns">
+
+        
+            <span id="sidebar"> <br /> {% block sidebar %}iufhui<br />
+            jugz {% endblock %}
+            </span>
+		
+
+        
+        
+            <div id="contentcont">
+                <div id="gradientbar"> &nbsp; </div>
+                <div id="content">
+			    {% block content %}Lorem Ipsum! Dolor sit amet
+			    aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa<br />
+			    aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa<br />
+			    aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaafewfwfwfhvawgfgkhfjgoifwaghvfhiawlgfvaksfhzsbghdliaksvfwauishsaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa<br />
+			    ödghböhahböajdkuhötajbabö{% endblock %}
+                </div>
+		    </div>
+		
+        </div>
+<div style="position:fixed;bottom:0px;height:1em;width:100%;text-align:right;background-color:#407E2D;color:white;"><a href="{% url "impressum" %}">Impressum</a></div>
+{% if debug %}
+            <script type="application/javascript">
+                {% for q in sql_queries %}
+                console.debug("({{ q.time }}s)", "{{ q.sql|escapejs }}");
+                {% endfor %}
+            </script>
+            {% endif %}
+
+	</body>
+</html>

@@ -1,0 +1,14 @@
+Todo:
+next
+edit
+von-bis
+Bearbeiten
+Profile?
+Registrieren?
+Permissions
+AJAX-Kalender-Datumsinput
+onmouseover day number of Termin
+Kategorie Suggest
+Homepage
+mail notifications
+ical

@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% load url from future %}
+
+{% block title %} Kalender Homepage {% endblock %}
+
+{% block content %}
+<h1>Willḱommen beim Chorplaner</h1><br />
+<h2><a href"{% url "daily_view" calid=1 day=day month=month year=year%}">{{day}}.</a> <a href="{% url "daily_view" calid=1 month=month year=year%}"> {{ month_name }}</a><a href="{% url "daily_view" calid=1 year=year%}"> {{ year }}</a></h2>
+<div>
+	Kalender
+{% endblock %}
