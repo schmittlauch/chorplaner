@@ -6,7 +6,16 @@ from chor.local_settings import *       #import of ADMINS, DATABASES and SECRET_
 try:
     import debug_toolbar
 except ImportError:
-    pass
+    dbg_toolbar = False
+else:
+    dbg_toolbar = True
+
+try:
+    import south
+except ImportError:
+    south_enabled = False
+else:
+    south_enabled = True
 
 def rel(folder):
     return os.path.join(str(os.path.abspath(os.path.dirname(__file__)))+ "/..", folder)
@@ -130,7 +139,6 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'south',
     'poll',
     'kalender',
     # Uncomment the next line to enable the admin:
@@ -138,9 +146,12 @@ INSTALLED_APPS = [
     # Uncomment the next line to enable admin documentation:
      'django.contrib.admindocs',
 ]
-if debug_toolbar:                               #debug_toolbar is optional
+if dbg_toolbar:                               #debug_toolbar is optional
     INSTALLED_APPS.append('debug_toolbar')
     MIDDLEWARE_CLASSES.append('debug_toolbar.middleware.DebugToolbarMiddleware')
+
+if south_enabled:                           #south is optional
+    INSTALLED_APPS.append('south')
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
