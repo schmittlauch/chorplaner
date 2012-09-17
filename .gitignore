@@ -3,3 +3,4 @@
 *.pyc
 local_settings.py
 chor_data.sqlite
+chor/kalender/migrations/*
