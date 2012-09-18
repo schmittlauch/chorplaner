@@ -10,5 +10,6 @@ This software is released under the terms of the GNU Affero General Public Licen
 After installation you need to change the *chor/chor/local_settings.py.template* and save it as *chor/chor/local_settings.py*
 
 ## Optional Development-tools:
-django-south
-django-debug_toolbar
+* [django-south](http://south.aeracode.org/)
+
+* [django-debug_toolbar](https://github.com/django-debug-toolbar/django-debug-toolbar)
