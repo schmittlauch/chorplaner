@@ -1,6 +1,5 @@
 #Chorplaner
 A calendar application I'm creating for my choire in Python with Django
-The interface is in German, but I can translate it if someone asks me.
 This project is ***still work in progress!!!***
 
 ## License
