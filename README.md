@@ -7,6 +7,7 @@ This software is released under the terms of the GNU Affero General Public Licen
 
 ## Installation
 After installation you need to change the *chor/chor/local_settings.py.template* and save it as *chor/chor/local_settings.py*
+You also have to do a ´python manage.py collectstatic -l´
 
 ## Optional Development-tools:
 * [django-south](http://south.aeracode.org/)

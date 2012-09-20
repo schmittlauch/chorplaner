@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 #Copyright (C) 2012  Oliver Schmidt
 #This program is free software: you can redistribute it and/or modify
 #it under the terms of the GNU Affero General Public License as
@@ -9,7 +10,6 @@
 #MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 #GNU Affero General Public License for more details.
 
-# -*- coding: utf-8 -*-
 # Create your views here.
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth import authenticate, login, logout

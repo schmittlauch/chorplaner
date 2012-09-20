@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 #Copyright (C) 2012  Oliver Schmidt
 #This program is free software: you can redistribute it and/or modify
 #it under the terms of the GNU Affero General Public License as
@@ -9,12 +10,10 @@
 #MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 #GNU Affero General Public License for more details.
 
-# -*- coding: utf-8 -*-
 from django.db import models
 from django.contrib.auth.models import User
 import datetime
 
-#ToDo: Groups + Permissions, wer kommt?, Termin in eigenen Kalender übernehmen??
 
 class Kalender(models.Model):
     name = models.CharField("Kalendername", max_length=100)

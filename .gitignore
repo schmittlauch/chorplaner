@@ -1,6 +1,7 @@
 *.log
 *.pot
 *.pyc
+*.sqlite
 local_settings.py
-chor_data.sqlite
 chor/kalender/migrations/
+chor/static/*

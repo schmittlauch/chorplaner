@@ -12,3 +12,5 @@ Kategorie Suggest
 Homepage
 mail notifications
 ical
+Groups + Permissions
+Termin in eigenen Kalender übernehmen??
