@@ -25,14 +25,57 @@ GNU Affero General Public License for more details. {% endcomment %}
         {% block html-head %} {% endblock %}
         </head>
 	<body>
-		<div class="navbar navbar-fixed-top">
+		<div class="navbar navbar-fixed-top navbar-inverse" id="header" style="width:100%!important;">
 			<div class="navbar-inner">
 				<div class="container"<
 					<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
 						<span style=="icon-bar"></span>
 					</a>
-					<a class="brand" href="{% URL kalender.views.home_view %}">Chorplaner</a> 
+					<a class="brand" href="{% url "kalender.views.kalender_home_view" %}">Chorplaner</a> 
 					<div clas="nav-collapse collapse">
 						<ul class="nav">
-							<li class="active"><a href="H{% URL kalender.views.home_view %}">Home</a></li>
-							<li><a href="#Impressum">Impressum
+							<li{% if menupoint == "Home" %} class="active"{% endif %}><a href="{% url "kalender.views.kalender_home_view" %}">Home</a></li>
+							<li><a href="#Kalenderuebersicht"{% if menupoint == "Kalenderuebersicht" %} class="active"{% endif %}>Kalenderübersicht</a>
+							<li><a href="{% url "kalender.views.create_termin" calid=1 %}"{% if menupoint == "terminerstellen" %} class="active"{% endif %}>Termin erstellen</a>
+							<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">About {{ menupoint }}<b class="caret"></b></a>
+							<ul class="dropdown-menu">
+								<li><a href="https://github.com/schmittlauch/chorplaner">Chorkalender auf GitHub</a></li>
+								<li><a href="{% url "impressum" %}">Impressum</a></li>
+							</ul>
+						</ul>
+					</div>
+					<a class="btn" href="{% url "kalender.views.logout_view" %}" style="right:0%;position:absolute;">Logout</a>
+				</div>
+			</div>
+			</div>
+			<div class="container" id="content" style="position:absolute;">
+				{% block content %}
+				Trololololo
+				{% endblock %}
+			</div>
+{% if debug %}
+            <script type="application/javascript">
+                {% for q in sql_queries %}
+                console.debug("({{ q.time }}s)", "{{ q.sql|escapejs }}");
+	{% endfor %}
+{% endif %}
+
+
+	<!-- Le javascript
+	================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script src="../assets/js/jquery.js"></script>
+	<script src="../assets/js/bootstrap-transition.js"></script>
+	<script src="../assets/js/bootstrap-alert.js"></script>
+	<script src="../assets/js/bootstrap-modal.js"></script>
+	<script src="../assets/js/bootstrap-dropdown.js"></script>
+	<script src="../assets/js/bootstrap-scrollspy.js"></script>
+	<script src="../assets/js/bootstrap-tab.js"></script>
+	<script src="../assets/js/bootstrap-tooltip.js"></script>
+	<script src="../assets/js/bootstrap-popover.js"></script>
+	<script src="../assets/js/bootstrap-button.js"></script>
+	<script src="../assets/js/bootstrap-collapse.js"></script>
+	<script src="../assets/js/bootstrap-carousel.js"></script>
+	<script src="../assets/js/bootstrap-typeahead.js"></script>
+	</body>
+</html>
