@@ -27,7 +27,7 @@ GNU Affero General Public License for more details. {% endcomment %}
         {% block html-head %} {% endblock %}
         </head>
 	<body>
-		<div class="navbar navbar-fixed-top navbar-inverse" id="header" style="width:100%!important;">
+		<div class="navbar navbar-static-top navbar-inverse" id="header">
 			<div class="navbar-inner">
 				<div class="container"<
 					<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
@@ -46,11 +46,11 @@ GNU Affero General Public License for more details. {% endcomment %}
 							</ul>
 						</ul>
 					</div>
-					<a class="btn" href="{% url "kalender.views.logout_view" %}" style="right:0%;position:absolute;">Logout</a>
+					<a class="btn btn-navbar" href="{% url "kalender.views.logout_view" %}" style="float:right;">Logout</a>
 				</div>
 			</div>
 			</div>
-			<div class="container" id="content" style="position:absolute;">
+			<div class="container" id="content">
 				{% block content %}
 				Trololololo
 				{% endblock %}
