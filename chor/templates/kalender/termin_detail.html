@@ -21,11 +21,15 @@ GNU Affero General Public License for more details. {% endcomment %}
 			$("#npart").click(function() { 
 				$.post("{% url "kalender.views.ajax_teilnehmen" %}" ,
 					{'part':0,'t_id':{{termin.id }} },
-					$(this).html("Du nimmst nicht mehr teil"))});
+					function(data) {
+						$(this).html(data);
+					})});
 			$("#part").click(function() { 
 				$.post("{% url "kalender.views.ajax_teilnehmen" %}" ,
 					{'part':1,'t_id':{{termin.id }} },
-					$(this).html(data))});
+					function(data) { 
+						$(this).html(data);
+					})});
 		});
 	function show_hide(obj) {
 		if ($(obj).css("display") == "none"){
