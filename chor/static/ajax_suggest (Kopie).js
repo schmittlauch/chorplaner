@@ -1,1 +1,0 @@
-/home/webb/django/chor/staticfiles/ajax_suggest (Kopie).js
