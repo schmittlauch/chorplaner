@@ -161,7 +161,7 @@ def create_termin(request, calid, year=None, month=None, day=None):
     else:
         date = datetime.date(month=int(month), day=int(day), year=int(year)) if day else None
         form = NewTerminForm(initial={'date':date,})
-    return render_to_response("kalender/new_termin.html", dict(calid=calid,form=form, ),context_instance=RequestContext(request))
+    return render_to_response("kalender/new_termin.html", dict(calid=calid,form=form,menupoint="termin_erstellen", ),context_instance=RequestContext(request))
 
 @login_required
 def ajax_teilnehmen(request):
@@ -182,4 +182,4 @@ def kalender_home_view(request):
     kalender = Kalender.objects.all()
     #next_7_days = Termin.objects.filter(datetime.datetime(day=date.day, month=date.month, year=date.year, hour=time.hour, minute=time.minute)<today+datetime.timedelta(days=7),today>datetime.datetime(day=date.day, month=date.month, year=date.year, hour=time.hour, minute=time.minute)).order_by('date').order_by('time')
     next_7_days = Termin.objects.filter(date__gte=today.date()).filter(date__lte=(today.date()+datetime.timedelta(days=7))).order_by('date')
-    return render_to_response("kalender/home.html",{'day':today.day,'month':today.month,'month_name':month_names[today.month-1],'year':today.year,'Kalender':kalender,'next_7_days':next_7_days},context_instance=RequestContext(request))
+    return render_to_response("kalender/home.html",{'day':today.day,'month':today.month,'month_name':month_names[today.month-1],'year':today.year,'Kalender':kalender,'next_7_days':next_7_days,'menupoint':"Home"},context_instance=RequestContext(request))
