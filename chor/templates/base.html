@@ -27,14 +27,14 @@ GNU Affero General Public License for more details. {% endcomment %}
         {% block html-head %} {% endblock %}
         </head>
 	<body>
-		<div class="navbar navbar-static-top navbar-inverse" id="header">
+		<div class="navbar navbar-fixed-top navbar-inverse" id="header">
 			<div class="navbar-inner">
 				<div class="container"<
 					<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-						<span style=="icon-bar"></span>
+						<span class="icon-bar"></span>
 					</a>
 					<a class="brand" href="{% url "kalender.views.kalender_home_view" %}">Chorplaner</a> 
-					<div clas="nav-collapse collapse">
+					<div class="nav-collapse collapse">
 						<ul class="nav">
 							<li{% if menupoint == "Home" %} class="active"{% endif %}><a href="{% url "kalender.views.kalender_home_view" %}">Home</a></li>
 							<li{% if menupoint == "Kalenderuebersicht" %} class="active"{% endif %}><a href="#Kalenderuebersicht">Kalenderübersicht</a></li>
@@ -44,9 +44,14 @@ GNU Affero General Public License for more details. {% endcomment %}
 								<li><a href="https://github.com/schmittlauch/chorplaner">Chorkalender auf GitHub</a></li>
 								<li><a href="{% url "impressum" %}">Impressum</a></li>
 							</ul>
+							{% if user.is_authenticated %}
+							<li><a href="{% url "kalender.views.logout_view" %}" style="float:right;">Logout</a></li>
+							{% else %}
+							<li><a href="{% url "login" %}" style="float:right;">Logout</a></li>
+							{% endif %}
+							
 						</ul>
-					</div>
-					<a class="btn btn-navbar" href="{% url "kalender.views.logout_view" %}" style="float:right;">Logout</a>
+					</div><!--nav-collapse-->
 				</div>
 			</div>
 			</div>

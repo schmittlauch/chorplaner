@@ -10,11 +10,12 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU Affero General Public License for more details.*/
 
 html,body{
-    margin: 0px!important;
-    padding: 0px;
-    min-height: 100%;
-    display:block;
-    background-color: red;
+//    margin: 0px!important;
+//    min-height: 100%;
+//    display:block;
+    //background-color: red;
+    background-color: rgb(246,255,141);
+    padding-top: 60px;			//Content below navbar
 }
 
 h1{
@@ -67,15 +68,14 @@ h1{
 
 
 #content{
-    //top: 10%;
+    top: 10%;
     
-    background-color: rgb(246,255,141);
-    max-width: 100%!important;
-    width:100%;
-    overflow: scroll;
+    //max-width: 100%!important;
+    //width:100%;
+    //overflow: scroll;
     //overflow-x: hidden;
-    min-height:100%;
-    padding: 30px 32px 1em 15%;
+    //min-height:100%;
+    //padding: 30px 32px 1em 15%;
 }
 
 .tlist{
