@@ -138,9 +138,8 @@ INSTALLED_APPS = [
      'django.contrib.admindocs',
 ]
 if dbg_toolbar:                               #debug_toolbar is optional
-    #INSTALLED_APPS.append('debug_toolbar')
-    #MIDDLEWARE_CLASSES.append('debug_toolbar.middleware.DebugToolbarMiddleware')
-    pass
+    INSTALLED_APPS.append('debug_toolbar')
+    MIDDLEWARE_CLASSES.append('debug_toolbar.middleware.DebugToolbarMiddleware')
 
 if south_enabled:                           #south is optional
     INSTALLED_APPS.append('south')
