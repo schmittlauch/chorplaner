@@ -47,7 +47,7 @@ GNU Affero General Public License for more details. {% endcomment %}
 							{% if user.is_authenticated %}
 							<li><a href="{% url "kalender.views.logout_view" %}" style="float:right;">Logout</a></li>
 							{% else %}
-							<li><a href="{% url "login" %}" style="float:right;">Logout</a></li>
+							<li><a href="{% url "login" %}" style="float:right;">Login</a></li>
 							{% endif %}
 							
 						</ul>
