@@ -28,7 +28,7 @@ urlpatterns = patterns('',
     # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),
     url(r'^kalender/', include('kalender.urls')),
-    url(r'^accounts/login/$', 'django.contrib.auth.views.login',{'template_name':'login.html'}),
+    url(r'^accounts/login/$', 'django.contrib.auth.views.login',{'template_name':'login.html'},name='login'),
     #url(r'^login/$', 'django.contrib.auth.views.login', {'template_name': 'login.html'}),
     url(r'^accounts/logout/$', 'kalender.views.logout_view'),
     url(r'^impressum/$', TemplateView.as_view(

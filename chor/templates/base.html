@@ -12,119 +12,78 @@ GNU Affero General Public License for more details. {% endcomment %}
 <!DOCTYPE HTML>
 <html>
 	<head>
+		<meta charset="utf-8">
+    		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>
 			{% block title %}x {% endblock %}
 		</title>
+		<meta name="author" content="Oliver Schmidt">
 		<meta http-equiv="content-type" content="utf-8">
 		<link href="{{ STATIC_URL }}bootstrap/css/bootstrap.min.css" rel="stylesheet">
 		<link href="{{ STATIC_URL }}base.css" rel="stylesheet" type="text/css">
+		<link href="{{ STATIC_URL }}bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
 		<script type="application/x-javascript" src="{{ STATIC_URL }}jquery.min.js"></script>
 		<script src="{{ STATIC_URL }}bootstrap/js/bootstrap.min.js"></script>
         {% block html-head %} {% endblock %}
         </head>
 	<body>
-
-        <div id="header">
-		<a href="{% url "kalender.views.kalender_home_view" %}"><img src="{{ STATIC_URL }}logo.png" style="z-index: 2;height: 100%;" /></a> <span id="menu">
-                <div id="hMenu">
-                    <div class="sMenu">
-                        <div class="desc">
-                            Kalender(übersicht/categorys)
-                        </div>
-                        <div class="item">
-                            Chorkalender(--> aktuelles Jahr)
-                        </div>
-                        <div class="item">
-                            Termin erstellen
-                        </div>
-                        <div class="item">
-                            nächste Termine
-                        </div>
-                        <div class="item">
-                            #TODO: Filter (mit AJAX?)
-                        </div>
-                    </div>
-                    <div class="sMenu">
-                        <div class="desc">
-                            <a href="#">Forum</a>
-                        </div>
-                        <div class="item">
-                            Item1
-                        </div>
-                        <div class="item">
-                            Item2
-                        </div>
-                        <div class="item">
-                            Item3
-                        </div>
-                        <div class="item">
-                            Item1
-                        </div>
-                        <div class="item">
-                            Item2
-                        </div>
-                        <div class="item">
-                            Item3
-                        </div>
-                        <div class="item">
-                            Item1
-                        </div>
-                        <div class="item">
-                            Item2
-                        </div>
-                        <div class="item">
-                            Item3
-                        </div>
-                        <div class="item">
-                            Item1
-                        </div>
-                        <div class="item">
-                            Item2
-                        </div>
-                        <div class="item">
-                            Item3
-                        </div>
-                    </div>
-		    <div class="sMenu">
-                        <div class="desc">
-				<a href="{% url "kalender.views.logout_view" %}">Logout</a>
-	    </div></div>
-
-                </div>
-            </span>
-        </div>
-
-		
-        <div id="columns">
-
-        
-            <span id="sidebar"> <br /> {% block sidebar %}iufhui<br />
-            jugz {% endblock %}
-            </span>
-		
-
-        
-        
-            <div id="contentcont">
-                <div id="gradientbar"> &nbsp; </div>
-                <div id="content">
-			    {% block content %}Lorem Ipsum! Dolor sit amet
-			    aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa<br />
-			    aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa<br />
-			    aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaafewfwfwfhvawgfgkhfjgoifwaghvfhiawlgfvaksfhzsbghdliaksvfwauishsaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa<br />
-			    ödghböhahböajdkuhötajbabö{% endblock %}
-                </div>
-		    </div>
-		
-        </div>
-<div style="position:fixed;bottom:0px;height:1em;width:100%;text-align:right;background-color:#407E2D;color:white;"><a href="{% url "impressum" %}">Impressum</a></div>
+		<div class="navbar navbar-fixed-top navbar-inverse" id="header">
+			<div class="navbar-inner">
+				<div class="container"<
+					<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+						<span class="icon-bar"></span>
+					</a>
+					<a class="brand" href="{% url "kalender.views.kalender_home_view" %}">Chorplaner</a> 
+					<div class="nav-collapse collapse">
+						<ul class="nav">
+							<li{% if menupoint == "Home" %} class="active"{% endif %}><a href="{% url "kalender.views.kalender_home_view" %}">Home</a></li>
+							<li{% if menupoint == "Kalenderuebersicht" %} class="active"{% endif %}><a href="#Kalenderuebersicht">Kalenderübersicht</a></li>
+							<li{% if menupoint == "termin_erstellen" %} class="active"{% endif %}><a href="{% url "kalender.views.create_termin" calid=1 %}">Termin erstellen</a>
+							<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">About<b class="caret"></b></a>
+							<ul class="dropdown-menu">
+								<li><a href="https://github.com/schmittlauch/chorplaner">Chorkalender auf GitHub</a></li>
+								<li><a href="{% url "impressum" %}">Impressum</a></li>
+							</ul>
+							{% if user.is_authenticated %}
+							<li><a href="{% url "kalender.views.logout_view" %}" style="float:right;">Logout</a></li>
+							{% else %}
+							<li><a href="{% url "login" %}" style="float:right;">Logout</a></li>
+							{% endif %}
+							
+						</ul>
+					</div><!--nav-collapse-->
+				</div>
+			</div>
+			</div>
+			<div class="container" id="content">
+				{% block content %}
+				Trololololo
+				{% endblock %}
+			</div>
 {% if debug %}
             <script type="application/javascript">
                 {% for q in sql_queries %}
                 console.debug("({{ q.time }}s)", "{{ q.sql|escapejs }}");
-                {% endfor %}
-            </script>
-            {% endif %}
+	{% endfor %}
+{% endif %}
 
-	</body>
+
+	<!-- Le javascript
+	================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<!--
+	<script src="{{ STATIC_URL  }}bootstrap/js/jquery.js"></script>
+	<script src="{{ STATIC_URL  }}bootstrap/js/bootstrap-transition.js"></script>
+	<script src="{{ STATIC_URL  }}bootstrap/js/bootstrap-alert.js"></script>
+	<script src="{{ STATIC_URL  }}bootstrap/js/bootstrap-modal.js"></script>
+	<script src="{{ STATIC_URL  }}bootstrap/js/bootstrap-dropdown.js"></script>
+	<script src="{{ STATIC_URL  }}bootstrap/js/bootstrap-scrollspy.js"></script>
+	<script src="{{ STATIC_URL  }}bootstrap/js/bootstrap-tab.js"></script>
+	<script src="{{ STATIC_URL  }}bootstrap/js/bootstrap-tooltip.js"></script>
+	<script src="{{ STATIC_URL  }}bootstrap/js/bootstrap-popover.js"></script>
+	<script src="{{ STATIC_URL  }}bootstrap/js/bootstrap-button.js"></script>
+	<script src="{{ STATIC_URL  }}bootstrap/js/bootstrap-collapse.js"></script>
+	<script src="{{ STATIC_URL  }}bootstrap/js/bootstrap-carousel.js"></script>
+	<script src="{{ STATIC_URL  }}bootstrap/js/bootstrap-typeahead.js"></script>-->
+</body>
 </html>
