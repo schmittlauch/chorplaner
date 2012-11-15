@@ -10,6 +10,7 @@ but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU Affero General Public License for more details. {% endcomment %}
 {% load url from future %}
+{% load bootstrap_toolkit %}
     {% block title %}Loginseite{% endblock %}
 
 {% block content %}
@@ -17,7 +18,7 @@ GNU Affero General Public License for more details. {% endcomment %}
 
 <form class="form-login" method="post" action="{% url 'django.contrib.auth.views.login' %}">
 	{% csrf_token %}
-	<table>
+	<!--<table>
 		<tr>
 			<td>{{ form.username.label_tag }}</td>
 			<td>{{ form.username }}</td>
@@ -27,7 +28,11 @@ GNU Affero General Public License for more details. {% endcomment %}
 				<td>{{ form.password }}</td>
 		</tr>
 	</table>
-	<input type="submit" class=btn value="login" />
+	<input type="submit" class=btn value="login" />-->
+	{{ form|as_bootstrap }}
+	    <div class="actions">
+		            <button type="submit" class="btn primary">Submit</button>
+			        </div>
 	<input type="hidden" name="next" value="{{ next }}" />
 </form>
 {% endblock %}

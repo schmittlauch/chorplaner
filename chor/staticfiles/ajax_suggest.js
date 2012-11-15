@@ -9,7 +9,10 @@ but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU Affero General Public License for more details.*/
 
-$(document).ready(console.debug("Test"));
+//$(document).ready(console.debug("Test"));
+$(function() {
+	$(dat.inputid).after('<div class="suggestionsBox" id="suggestions" style="display: none;"><img src="' + dat.static + 'upArrow.png" style="position: relative; top: -12px; left: 30px;" alt="upArrow" /><div class="suggestionList" id="autoSuggestionsList"></div></div>');
+});
 
 function suggest_req(inputString) {
 	console.debug("nomz");

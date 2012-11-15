@@ -22,8 +22,10 @@ h1{
     color: green;
 }
 
-.error_message{
-    border:2px red dashed;
+.error_message, .help-block.error {
+    border:1px red solid;
+    border-radius:10px;
+    padding: 2px;
     background-color: rgba(250,5,5,0.5);
     font-weight: bold;
 }
@@ -33,7 +35,7 @@ h1{
 	position:absolute;
 }
 
-.thead, .day, .empty, .month, .current_m, .current_d {
+.thead, .kday, .empty, .kmonth, .current_month, .current_day {
     display: inline-block;
     color: rgb(100,100,255);
     border: 1px solid blue;
@@ -41,12 +43,12 @@ h1{
     border-radius: 5px;
 }
 
-.thead, .day, .empty, .current_d{
+.thead, .kday, .empty, .current_day{
     height: 2em;
     width: 13%;
 }
 
-.month, .current_m {
+.kmonth, .current_m {
     height: 20pt;
     width: 15%;
     /*display: inline-block;*/
@@ -55,10 +57,10 @@ h1{
 .thead{
     background-color: rgb(220,120,100);
 }
-.day, .empty, .month{
+.kday, .empty, .kmonth{
     background-color: rgb(10,200,85);
 }
-.current_d, .current_m{
+.current_day, .current_month{
     background-color: rgb(200, 125, 125);
 }
 #header{

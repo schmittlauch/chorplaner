@@ -10,51 +10,32 @@ but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU Affero General Public License for more details. {% endcomment %}
 {% load url from future %}
+{% load bootstrap_toolkit %}
 
 {% block title %} neuen Termin hinzufügen {{ current_month_name }} {% endblock %}
 
 {% block html-head %}
 <script type="application/x-javascript" src="{{ STATIC_URL }}jquery.min.js"></script>
-<script type="application/x-javascript" src="{{ STATIC_URL }}ajax_suggest.js"></script>
 <script type="application/x-javascript">$(document).ready(function() {
-	dat = JSON.parse('{"inputid":"#id_category","target":"/kalender/ajax/category_suggest/"}');
+	dat = JSON.parse('{"inputid":"#id_category","target":"/kalender/ajax/category_suggest/","static":"{{ STATIC_URL }}"}');
 })
 </script>
+<script type="application/x-javascript" src="{{ STATIC_URL }}ajax_suggest.js"></script>
+{{ form.media }}
 {% endblock %}
 
 {% block content %}
 <h1>Neuen Termin erstellen</h1>
 <form action="{% url "kalender.views.create_termin" calid=calid %}" method="POST">
-	{{ form.non_field_errors }}
-	<table><tbody>
-			<tr><td class="fieldWrapper">
-				{{ form.name.label }}</td><td class="fieldWrapper"> {{ form.name }} {{ form.name.errors }}
-		</td></tr>
-    <tr><td class="fieldWrapper">
-		    {{ form.date.label }}</td> <td class="fieldWrapper">{{ form.date }} {{ form.date.errors }}
-    </td></tr>
-    <tr><td class="fieldWrapper">
-	    {{ form.time.label }}</td><td class="fieldWrapper"> {{ form.time }} {{ form.time.errors }}
-    </td></tr>
-    <tr><td class="fieldWrapper">
-		    {{ form.description.label }}</td><td class="fieldWrapper"> {{ form.description }} {{ form.description.errors }}
-    </td></tr>
-    <tr><td class="fieldWrapper">
-		    {{ form.category.label }}</td> <td class="fieldWrapper">{{ form.category }} {{ form.category.errors }}
-			<div class="suggestionsBox" id="suggestions" style="display: none;">
-				<img src="{{ STATIC_URL }}upArrow.png" style="position: relative; top: -12px; left: 30px;" alt="upArrow" />
-				<div class="suggestionList" id="autoSuggestionsList"></div>
-			</div>
-
-    </td></tr>
-    </tr><td class="fieldWrapper">
-    {{ form.participants.label }}</td><td class="fieldWrapper"> {{ form.participants }} {{ form.participants.errors }}
-    </td></tr></tbody></table>
-
-
-
 	{% csrf_token %}
-	<input id="submit" type="submit" value="Termin erstellen">
+	{{ form|as_bootstrap }}
+	<!--<div class="suggestionsBox" id="suggestions" style="display: none;">
+		<img src="{{ STATIC_URL }}upArrow.png" style="position: relative; top: -12px; left: 30px;" alt="upArrow" />
+		<div class="suggestionList" id="autoSuggestionsList"></div>
+	</div>-->
+	<div class="actions">
+		<button type="submit" class="btn-primary btn">Termin erstellen</button>
+	</div>
 </form>
 
 {% endblock %}

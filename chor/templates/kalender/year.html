@@ -20,7 +20,7 @@ moin {{ user.first_name }} aka {{ user }} <br />
 <a href="{% url "kalender.views.yearly_view" calid=calid year=year|add:-1 %}" class="prev_a"> Vorheriges Jahr </a> <a href="{% url "kalender.views.yearly_view" calid=calid year=year|add:1 %}" class="next_a"> N&auml;chstes Jahr </a> <br />
 {% spaceless %}
 {% for num, month, has_entry, current in months %}
-    <span class={% if current %}"current_m"{% else %}"month"{% endif %} >
+    <span class={% if current %}"current_month"{% else %}"kmonth"{% endif %} >
     {% if has_entry %}<b>{% endif %}
     <a href="{% url "kalender.views.monthly_view" calid=calid year=year month=num %}">{{ month }}</a>
     {% if has_entry %}</b>{% endif %}

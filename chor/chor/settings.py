@@ -136,6 +136,7 @@ INSTALLED_APPS = [
      'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
      'django.contrib.admindocs',
+     'bootstrap_toolkit',
 ]
 if dbg_toolbar:                               #debug_toolbar is optional
     INSTALLED_APPS.append('debug_toolbar')

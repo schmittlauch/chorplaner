@@ -161,7 +161,7 @@ def create_termin(request, calid, year=None, month=None, day=None):
     else:
         date = datetime.date(month=int(month), day=int(day), year=int(year)) if day else None
         form = NewTerminForm(initial={'date':date,})
-    return render_to_response("kalender/new_termin.html", dict(calid=calid,form=form,menupoint="termin_erstellen", ),context_instance=RequestContext(request))
+    return render_to_response("kalender/new_termin.html", dict(calid=calid,form=form,menupoint="termin_erstellen",),context_instance=RequestContext(request))
 
 @login_required
 def ajax_teilnehmen(request):
