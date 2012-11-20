@@ -18,5 +18,6 @@ class NewTerminForm(forms.Form):
     date = forms.DateField(label="Datum", initial='dat',widget=BootstrapDateInput)
     time = forms.TimeField(label="Zeit")
     description = forms.CharField(label="Beschreibung",widget=forms.Textarea)
-    category = forms.CharField(label="Kategorie:",required=False,widget=forms.TextInput(attrs={'onblur':"fill()", 'onkeyup':"suggest_req(this.value);", 'autocomplete':"off"}))
+    #category = forms.CharField(label="Kategorie:",required=False,widget=forms.TextInput(attrs={'onblur':"fill()", 'onkeyup':"suggest_req(this.value);", 'autocomplete':"off"}))
+    category = forms.CharField(label="Kategorie:",required=False,widget=forms.TextInput(attrs={'class':'typeahead','data-provide':'typeahead', 'autocomplete':"off"}))
     participants = forms.BooleanField(label="Ich nehme teil",required=False,initial=True)

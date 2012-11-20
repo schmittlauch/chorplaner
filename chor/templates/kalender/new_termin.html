@@ -15,13 +15,15 @@ GNU Affero General Public License for more details. {% endcomment %}
 {% block title %} neuen Termin hinzufügen {{ current_month_name }} {% endblock %}
 
 {% block html-head %}
-<script type="application/x-javascript" src="{{ STATIC_URL }}jquery.min.js"></script>
+{{ form.media }}
 <script type="application/x-javascript">$(document).ready(function() {
-	dat = JSON.parse('{"inputid":"#id_category","target":"/kalender/ajax/category_suggest/","static":"{{ STATIC_URL }}"}');
-})
+	dat = JSON.parse('{"inputid":"#id_category","target":"{% url "kalender.views.category_suggest" %}"}');
+
+	});
 </script>
 <script type="application/x-javascript" src="{{ STATIC_URL }}ajax_suggest.js"></script>
-{{ form.media }}
+	
+
 {% endblock %}
 
 {% block content %}

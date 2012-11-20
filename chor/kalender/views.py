@@ -10,7 +10,7 @@
 #MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 #GNU Affero General Public License for more details.
 
-# Create your views here.
+import json
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render_to_response, get_object_or_404
@@ -131,12 +131,11 @@ def category_suggest(request):
         received_str = request.GET['str']
         found_categories = Category.objects.filter(name__istartswith=received_str) #i stands for incasesensitive
         if found_categories:
-            for cat in found_categories:
-                return_categories = return_categories + cat.name + "\n"
-        
+            return_categories = [ cat.name for cat in found_categories ]
+            return_json = json.dumps(return_categories)
         print "returned str:"
-        print return_categories
-        return HttpResponse(str(return_categories), mimetype='text/plain')
+        print return_json
+        return HttpResponse(str(return_json), mimetype='application/json')
     else:
         return HttpResponse('')
 
