@@ -150,7 +150,12 @@ def create_termin(request, calid, year=None, month=None, day=None):
             term = Termin(name=formdata['name'],date=formdata['date'],time=formdata['time'],description=formdata['description'],in_calendar=kalender)
             term.save()
             if formdata['category']:
-                term.category.add(formdata['category'])
+                try:
+                    categ = Category.objects.get(name__iexact=formdata['category'])
+                except Category.DoesNotExist:
+                    categ = Category(name=formdata['category'])
+                    categ.save()
+                term.category.add(categ)
                 term.save()
             if formdata['participants']:
                 term.participants.add(request.user)
