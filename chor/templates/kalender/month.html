@@ -22,9 +22,9 @@ GNU Affero General Public License for more details. {% endcomment %}
 {% for wkday in week_short %}<span class="thead">{{ wkday }}</span>{% endfor %}<br />
 {% for day, entries, linebreak, is_current in days %}
     {% if day == 0 %} <span class="empty"> &nbsp; </span>
-    {% else %}  {% if entries > 0 %}<b> {% endif %}
-	    <a href="{% url "daily_view" calid=calid year=year month=month_num day=day %}"><span class="{% if is_current %}current_dayay{% else %}kday{% endif %}"> {{ day }} </span></a>
-    {% if entries > 0 %} </b> {% endif %} {% if linebreak %} <br /> {% endif %}
+    {% else %}
+    <a href="{% url "daily_view" calid=calid year=year month=month_num day=day %}"><span class="{% if is_current %}current_day{% else %}kday{% endif %}{% if entries > 0 %} has_termine{% else %} no_termine{% endif %}"> {{ day }} </span></a>
+    {% if linebreak %} <br /> {% endif %}
     {% endif %}
 {% endfor %}
 </div>

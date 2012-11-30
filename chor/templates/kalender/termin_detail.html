@@ -13,7 +13,6 @@ GNU Affero General Public License for more details. {% endcomment %}
 
 {% block title %} Termindetails: {{ termin.name }} {% endblock %}
 {% block html-head %}
-<script type="application/x-javascript" src="{{ STATIC_URL }}jquery.min.js"></script>
 <script type="application/x-javascript" src="{{ STATIC_URL }}jquery_csrf.js"></script>
 <script type="application/x-javascript">
 	$(document).ready( function() {
@@ -48,7 +47,7 @@ GNU Affero General Public License for more details. {% endcomment %}
 
 {% block content %}
 <h1>{{ termin.name }}</h1><br />
-<div class="{% if user in termin.participants.all %}button{% else %}nobutton{% endif %}">{% if user in termin.participants.all %}Du nimmst teil<br /><a id="npart" href="#">Nicht mehr teilnehmen</a>{% else %}Du nimmst nicht teil<br /><a id="part" href="#">Teilnehmen</a>{% endif %}</div>
+<div class="{% if user in termin.participants.all %}button{% else %}nobutton{% endif %}">{% if user in termin.participants.all %}Du nimmst teil<br /><a class="btn btn-danger" id="npart" href="#">Nicht mehr teilnehmen</a>{% else %}Du nimmst nicht teil<br /><a class="btn btn-success" id="part" href="#">Teilnehmen</a>{% endif %}</div>
 <div style="text-align:center">
 	<table style="margin-left:15%;"><tbody>
 		<tr><td class="descr">Datum:</td><td class="dat">Am {{ termin.date }} um {{ termin.time }}</td></tr>
