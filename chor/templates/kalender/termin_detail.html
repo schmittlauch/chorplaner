@@ -21,25 +21,16 @@ GNU Affero General Public License for more details. {% endcomment %}
 				$.post("{% url "kalender.views.ajax_teilnehmen" %}" ,
 					{'part':0,'t_id':{{termin.id }} },
 					function(data) {
-						$(this).html(data);
+						$("#npart").html(data);
 					})});
 			$("#part").click(function() { 
 				$.post("{% url "kalender.views.ajax_teilnehmen" %}" ,
 					{'part':1,'t_id':{{termin.id }} },
 					function(data) { 
-						$(this).html(data);
+						console.debug(JSON.stringify(this));
+						$("#part").html(data);
 					})});
 		});
-	function show_hide(obj) {
-		if ($(obj).css("display") == "none"){
-			console.debug(obj + " not visible");
-			$(obj).show("fast");
-		}
-		else {
-			console.debug(obj + " visible");
-			$(obj).hide("fast");
-		}
-	}
 
 </script>
 <!--{{ csrf_token }}-->
@@ -47,13 +38,44 @@ GNU Affero General Public License for more details. {% endcomment %}
 
 {% block content %}
 <h1>{{ termin.name }}</h1><br />
-<div class="{% if user in termin.participants.all %}button{% else %}nobutton{% endif %}">{% if user in termin.participants.all %}Du nimmst teil<br /><a class="btn btn-danger" id="npart" href="#">Nicht mehr teilnehmen</a>{% else %}Du nimmst nicht teil<br /><a class="btn btn-success" id="part" href="#">Teilnehmen</a>{% endif %}</div>
-<div style="text-align:center">
-	<table style="margin-left:15%;"><tbody>
-		<tr><td class="descr">Datum:</td><td class="dat">Am {{ termin.date }} um {{ termin.time }}</td></tr>
-		<tr><td class="descr">Beschreibung:</td><td class="dat">{{ termin.description }}</td></tr>
-		<tr><td class="descr">Teilnehmer:</td><td class="dat"><a id="usernum" href="#">{{ termin.participants.all|length }} Teilnehmer </a><br />
-				<div class="spoiler" style="display:none;">{% for part in termin.participants.all %} {{ part.first_name }} {{ part.last_name }} <br />{% endfor %}</div></td></tr>
-	</tbody></table>
-</div>
+{% if user in termin.participants.all %}<a class="btn btn-danger" id="npart" href="#">Nicht mehr teilnehmen</a>{% else %}<a class="btn btn-success" id="part" href="#">Teilnehmen</a>{% endif %}
+<br><br>
+	<div class="accordion" id="termin_details">
+		<div class="accordion-group tlist">
+			<div class="accordion-heading">
+				<a class="accordion-toggle" data-toggle="collapse" data-parent="#termin_details" href="#collapseOne">
+					Datum:
+				</a>
+			</div>
+			<div id="collapseOne" class="accordion-body collapse in">
+				<div class="accordion-inner">
+					Am {{ termin.date }} um {{ termin.time }}
+				</div>
+			</div>
+		</div>
+		<div class="accordion-group tlist">
+			<div class="accordion-heading">
+				<a class="accordion-toggle" data-toggle="collapse" data-parent="#termin_details" href="#collapseTwo">
+					Beschreibung:
+				</a>
+			</div>
+			<div id="collapseTwo" class="accordion-body collapse">
+				<div class="accordion-inner">
+					{{ termin.description }}
+				</div>
+			</div>
+		</div>
+		<div class="accordion-group tlist">
+			<div class="accordion-heading">
+				<a class="accordion-toggle" data-toggle="collapse" data-parent="#termin_details" href="#collapseThree">
+					{{ termin.participants.all|length }} Teilnehmer
+				</a>
+			</div>
+			<div id="collapseThree" class="accordion-body collapse">
+				<div class="accordion-inner">
+					{% for part in termin.participants.all %} {{ part.first_name }} {{ part.last_name }} <br />{% endfor %}
+				</div>
+			</div>
+		</div>
+	</div>
 {% endblock %}
