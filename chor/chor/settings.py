@@ -86,6 +86,7 @@ STATICFILES_DIRS = (
     # Don't forget to use absolute paths, not relative paths.
     rel('staticfiles'),
     ('bootstrap',rel('../submodules/twitterbootstrap/docs/assets/')),
+    ('bootstrap/less',rel('../submodules/twitterbootstrap/less/')),
 )
 
 # List of finder classes that know how to find static files in
@@ -138,6 +139,7 @@ INSTALLED_APPS = [
     # Uncomment the next line to enable admin documentation:
      'django.contrib.admindocs',
      'bootstrap_toolkit',
+     'less',
 ]
 if dbg_toolbar:                               #debug_toolbar is optional
     INSTALLED_APPS.append('debug_toolbar')
@@ -190,3 +192,5 @@ DEBUG_TOOLBAR_CONFIG = {
     'TAG': 'div',
     'ENABLE_STACKTRACES' : True,
 }
+
+LESS_EXECUTABLE=rel('../node_modules/less/bin/lessc')

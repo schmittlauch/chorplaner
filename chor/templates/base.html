@@ -9,6 +9,7 @@ but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU Affero General Public License for more details. {% endcomment %}
 {% load url from future %}
+{% load less %}
 <!DOCTYPE HTML>
 <html>
 	<head>
@@ -19,10 +20,9 @@ GNU Affero General Public License for more details. {% endcomment %}
 		</title>
 		<meta name="author" content="Oliver Schmidt">
 		<meta http-equiv="content-type" content="utf-8">
-		<link href="{{ STATIC_URL }}bootstrap/css/bootstrap.css" rel="stylesheet">
-		<link href="{{ STATIC_URL }}base.css" rel="stylesheet" type="text/css">
-		<!--<link href="{{ STATIC_URL }}bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">-->
-		<script type="application/x-javascript" src="{{ STATIC_URL }}jquery.min.js"></script>
+		<!--<link rel="stylesheet" href="{{ STATIC_URL }}base.css" type="text/css">-->
+		<link rel="stylesheet" href="{{ STATIC_URL }}{% less 'base.less' %}">
+		<script type="application/javascript" src="{{ STATIC_URL }}jquery.min.js"></script>
 		<script src="{{ STATIC_URL }}bootstrap/js/bootstrap.min.js"></script>
         {% block html-head %} {% endblock %}
         </head>
