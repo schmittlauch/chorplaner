@@ -1,0 +1,137 @@
+/*Copyright (C) 2012  Oliver Schmidt
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as
+published by the Free Software Foundation, either version 3 of the
+License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Affero General Public License for more details.*/
+
+@import "bootstrap/less/bootstrap.less";
+
+@pastel_yellow: rgb(246,255,141);
+
+body{
+    background-color: @pastel_yellow;
+    padding-top: 60px;			//Content below navbar
+}
+
+h1{
+    color: green;
+}
+
+.error_message, .help-block.error {
+    border:1px red solid;
+    border-radius:10px;
+    padding: 2px;
+    background-color: rgba(250,5,5,0.5);
+    font-weight: bold;
+}
+
+.next_a{
+	right:10%;
+	position:absolute;
+}
+
+.thead, .kday, .empty, .kmonth, .current_month, .current_day {
+    display: inline-block;
+    color: rgb(100,100,255);
+    border: 1px solid blue;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.has_termine {
+	background-color: rgb(230, 216, 164);
+}
+
+.thead, .kday, .empty, .current_day{
+    height: 2em;
+    width: 13%;
+}
+
+.kmonth, .current_m {
+    height: 20pt;
+    width: 15%;
+    /*display: inline-block;*/
+}
+
+.thead{
+    background-color: rgb(220,120,100);
+}
+.empty, .kmonth, .no_termine{
+    background-color: rgb(10,200,85);
+}
+.current_day, .current_month{
+    background-color: rgb(200, 125, 125);
+}
+#header{
+    //min-width:100%!important;
+    //padding:0px!important;
+}
+
+
+#content{
+    padding-top: 2%;
+    
+    //max-width: 100%!important;
+    //width:100%;
+    //overflow: scroll;
+    //overflow-x: hidden;
+    //min-height:100%;
+    //padding: 30px 32px 1em 15%;
+}
+
+.tlist{
+	border-color:#4A8CF6;
+	border-width:2px;
+	border-style:solid;
+	background-color:rgba(254,254,254,0.3);
+	padding:0.5em;
+	margin: 0% 20% 0% 20%;
+	text-align:left;
+}
+.tlist:hover{
+	background-color:#E0F5F3;
+}
+td.descr{
+	text-align:right;
+	margin-left:15%;
+	font-size:14pt;
+	font-weight:bold;
+	vertical-align:top;
+}
+td.dat{
+	text-align:left;
+}
+.suggestionsBox {
+    position: relative;
+    left: 30px;
+    margin: 10px 0px 0px 0px;
+    width: 200px;
+    background-color: #212427;
+    border-radius: 7px;
+    -moz-border-radius: 7px;
+    -webkit-border-radius: 7px;
+    border: 2px solid #000;
+    color: #fff;
+    z-index:12;
+}
+ 
+.suggestionList {
+    margin: 0px;
+    padding: 0px;
+}
+ 
+.suggestionList li {
+    margin: 0px 0px 3px 0px;
+    padding: 3px;
+    cursor: pointer;
+}
+ 
+.suggestionList li:hover {
+    background-color: #659CD8;
+}
+
