@@ -194,3 +194,6 @@ DEBUG_TOOLBAR_CONFIG = {
 }
 
 LESS_EXECUTABLE=rel('../node_modules/less/bin/lessc')
+
+if DEBUG:
+    LESS_ROOT = rel("staticfiles")
