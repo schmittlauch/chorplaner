@@ -33,7 +33,7 @@ GNU Affero General Public License for more details. {% endcomment %}
 					<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
 						<span class="icon-bar"></span>
 					</a>
-					<a class="brand" href="{% url "kalender.views.kalender_home_view" %}">Chorplaner</a> 
+					<a class="brand" href="{% url "kalender.views.kalender_home_view" %}"><!--<img class="logo" src="{{ STATIC_URL }}logo.svg">-->Chorplaner</a> 
 					<div class="nav-collapse collapse">
 						<ul class="nav">
 							<li{% if menupoint == "Home" %} class="active"{% endif %}><a href="{% url "kalender.views.kalender_home_view" %}">Home</a></li>
